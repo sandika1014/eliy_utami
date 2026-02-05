@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Selamat Ulang Tahun Eliy Utami</title>
+
+<style>
+body {
+    background: linear-gradient(to right, #fceabb, #f8b500);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+}
+
+p {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+button {
+    padding: 14px 26px;
+    font-size: 1em;
+    background: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+button:hover {
+    background: #e91e63;
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Selamat Ulang Tahun, Eliy Utami! 🎂</h1>
+<p>Hari ini kamu genap 23 tahun 🥳</p>
+<p>Semoga panjang umur, sehat selalu, dan bahagia 💖</p>
+
+<button onclick="showMore()">Klik untuk pesan spesial 🎁</button>
+
+<p id="message" style="display:none; margin-top:20px;"></p>
+
+<div class="confetti" id="confetti"></div>
+
+<!-- BACKSOUND -->
+<audio id="bgMusic" loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function showMore() {
+    // play music
+    const music = document.getElementById("bgMusic");
+    music.play();
+
+    const msg = document.getElementById("message");
+    msg.style.display = "block";
+    msg.innerText =
+      "Teruslah bersinar seperti bintang di langit malam. Jangan pernah ragu bermimpi besar. I will always wish you the best 💖🌟";
+
+    const confetti = document.getElementById("confetti");
+    confetti.innerHTML = "";
+
+    for (let i = 0; i < 120; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti-piece";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.backgroundColor = randomColor();
+        piece.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        piece.style.animationDelay = Math.random() + "s";
+        confetti.appendChild(piece);
+    }
+}
+
+function randomColor() {
+    const colors = ["#f44336", "#e91e63", "#9c27b0", "#3f51b5", "#2196f3", "#4caf50", "#ffeb3b", "#ff9800"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+</script>
+
+</body>
+</html>
